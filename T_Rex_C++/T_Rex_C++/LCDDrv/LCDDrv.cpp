@@ -8,26 +8,28 @@
 static LCDDrv LCD;
 
 void LCDDrv::Init(){	
-	_delay_ms(500);
+	_delay_ms(50);
 	DDRD |= 0b11110000;
 	DDRB |= 0b00000111;
 	LCD.BacklightOn();
+	LCD.modeControl = 0;
+	LCD.dispControl = 0;
+	LCD.funcControl = LCD_FUNCTIONSET | LCD_4BITMODE | LCD_2LINE | LCD_5x8DOTS;
+	
 	LCD.FourBitComd(LCD_INIT8BIT);
 	_delay_ms(5);
 	LCD.FourBitComd(LCD_INIT8BIT);
 	_delay_us(200);
 	LCD.FourBitComd(LCD_INIT8BIT);
 	_delay_us(200);
-	LCD.funcControl = LCD_FUNCTIONSET | LCD_4BITMODE | LCD_2LINE | LCD_5x8DOTS; 
 	LCD.FourBitComd(LCD.funcControl);
 	_delay_us(200);
-	LCD.Command(LCD.funcControl);
-	LCD.Command(LCD_DISPLAYCONTROL | LCD_DISPLAYOFF);
+	
+	LCD.DisplayOff();
 	LCD.Clear();
-	LCD.modeControl = LCD_ENTRYLEFT | LCD_ENTRYSHIFTDECREMENT;
-	LCD.Command(LCD_ENTRYMODESET | LCD.modeControl);
-	LCD.dispControl = LCD_DISPLAYCONTROL | LCD_DISPLAYON;
-	LCD.Command(LCD.dispControl);
+	LCD.LeftToRight();
+	LCD.AutoDecrement();
+	LCD.DisplayOn();
 }
 
 void LCDDrv::SetCursor(uint8_t coll, uint8_t row){
