@@ -5,7 +5,7 @@ Initial project here: https://www.hackster.io/brzi/google-chrome-dinosaur-game-o
 
 This version is re-written in C++ and adds several things:
   
-  1. C++ library for driving the LCD. This library was made specifically for Arduino Uno board with DFRobot LCD Keypad shield, though it can be easily ported to what ever it will be running on (please note that this is made in Atmel Studio, not Arduino IDE, I just used the Arduino).
+  1. C++ library for driving the LCD. This library was made specifically for Arduino Uno board with DFRobot LCD Keypad shield, though it can be easily ported to what ever it will be running on (please note that this is made in Atmel Studio, not Arduino IDE, I just used the Arduino Board).
   
   2. Cleaner code and easy to use functions
   
